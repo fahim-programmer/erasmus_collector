@@ -1,12 +1,3 @@
-
-'''
-Welcome to bot_lib_v3 and this a new project file
-you can start by editing this script. Please run 
-python bot_lib_v3 setup to install the required 
-libraries.
-
-'''
-
 from bot_lib_v3 import Selenium_bot, Chrome_Driver, Excel
 
 _path_dyn_each_program = '''//span[contains(text(),"Erasmus Mundus Catalogue")]//parent::h2//parent::div//parent::div//article'''
@@ -17,20 +8,11 @@ _path_com_program_locations = f'''{_path_dyn_each_program}//dd//div'''
 _path_dyn_btn_next = '''//span[contains(text(),'Next')]//parent::a'''
 _path_dyn_btn_previous = '''//span[contains(text(),'Previous')]//parent::a'''
 
-Program = {
-    'title':'program_title',
-    'abbr':'SEMDA',
-    'link':'https//www.programsite.com',
-    'locations':'Spain, Belgium, Germany'
-}
-
 class main(Selenium_bot):
     def __init__(self):
         super().__init__(browser='Chrome', driver_exe=Chrome_Driver())
-        #self.get_url('https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en')
-        #data = self.extract()
-        #self.object_dump(data, 'data_stash.pyobj')
-        data = self.load_object('data_stash.pyobj')
+        self.get_url('https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en')
+        data = self.extract()
         self.initalize_date_store(data)
         #self.timeout(10)
     
